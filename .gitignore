@@ -1,0 +1,105 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script, not by hand
+#  If you write them by hand, you can place them in this directory
+#  and they will be ignored automatically.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   See https://github.com/pyenv/pyenv/wiki/Using-pyenv-as-a-deployable-tool
+#   for more information on how to manage multiple Python versions
+#   with pyenv. If you want pyenv to be found automatically, add the
+#   following line to your ~/.bashrc (or ~/.bash_profile):
+#   export PYENV_ROOT="$HOME/.pyenv"
+#   export PATH="$PYENV_ROOT/bin:$PATH"
+#
+#   Then, you should be able to run `pyenv` and `pyenv install` and `pyenv use`
+#   from your shell.
+#
+#   If any of those commands don't work, see https://github.com/pyenv/pyenv/issues/76
+#   for some known issues.
+#
+#   This directory will be ignored by git, but it will be checked by
+#   pyenv. If you are using a version of pyenv that doesn't check this
+#   directory, you may need to remove the following line from your pyenv
+#   configuration (see https://github.com/pyenv/pyenv/wiki/Using-pyenv-as-a-deployable-tool):
+#   export PYENV_ROOT_PATH="$HOME/.pyenv"
+
+# log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
