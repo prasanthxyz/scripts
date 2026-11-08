@@ -1,0 +1,10 @@
+#!/bin/sh
+# Runs orphaned_media_cleanup.py (script in this repo) with the repo-local .venv interpreter.
+# Resolves symlinks so it works when invoked from ~/bin.
+link=$0
+while [ -L "$link" ]; do
+    t=$(readlink "$link")
+    case $t in /*) link=$t ;; *) link=$(dirname "$link")/$t ;; esac
+done
+dir=$(CDPATH= cd -- "$(dirname -- "$link")/.." && pwd)
+exec "$dir/.venv/bin/python" "$dir/orphaned_media_cleanup.py" "$@"
