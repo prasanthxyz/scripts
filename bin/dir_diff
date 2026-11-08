@@ -1,0 +1,10 @@
+#!/bin/sh
+# Runs dir_diff.py (script in this repo) with the repo-local .venv interpreter.
+# Resolves symlinks so it works when invoked from ~/bin.
+link=$0
+while [ -L "$link" ]; do
+    target=$(readlink "$link")
+    case $target in /*) link=$target ;; *) link=$(dirname "$link")/$target ;; esac
+done
+dir=$(CDPATH= cd -- "$(dirname -- "$link")/.." && pwd)
+exec "$dir/.venv/bin/python" "$dir/dir_diff.py" "$@"
