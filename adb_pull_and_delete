@@ -1,0 +1,41 @@
+#!/bin/bash
+
+PHONE_DIR=$1
+LOCAL_DIR=$2
+
+mkdir -p "$LOCAL_DIR"
+
+# List all files on the device
+FILE_LIST=$(adb shell ls "$PHONE_DIR")
+
+echo "Found files:"
+echo "$FILE_LIST"
+echo
+
+for f in $FILE_LIST; do
+    echo "Processing: $f"
+
+    # Pull file
+    adb pull "$PHONE_DIR/$f" "$LOCAL_DIR/"
+    if [ $? -ne 0 ]; then
+        echo "❌ Pull failed for $f. Skipping delete."
+        continue
+    fi
+
+    # Check if file exists locally and matches size
+    PHONE_SIZE=$(adb shell stat -c%s "$PHONE_DIR/$f" 2>/dev/null)
+    LOCAL_SIZE=$(stat -f%z "$LOCAL_DIR/$f" 2>/dev/null)
+
+    if [ "$PHONE_SIZE" = "$LOCAL_SIZE" ]; then
+        echo "✔ Copy verified. Deleting from phone..."
+        adb shell rm "$PHONE_DIR/$f"
+    else
+        echo "⚠ Size mismatch! NOT deleting $f"
+        rm "$LOCAL_DIR/$f"
+    fi
+
+    echo
+done
+
+echo "Done."
+
