@@ -103,3 +103,10 @@ ipython_config.py
 # Temporary files
 *.tmp
 *.temp
+
+# virtualenvs
+.venv/
+venv/
+
+# macOS
+.DS_Store
