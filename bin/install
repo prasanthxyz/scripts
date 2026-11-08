@@ -1,0 +1,15 @@
+#!/bin/sh
+# Symlinks every shim in this repo's bin/ into ~/bin (created if missing),
+# so the scripts are on PATH as ~/.bin/name.
+# Idempotent: re-running updates the links.
+set -eu
+mkdir -p "$HOME/bin"
+this="$(basename "$0")"
+listdir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+for shim in "$listdir"/*; do
+    name="$(basename "$shim")"
+    [ "$name" = "$this" ] && continue  # don't link the installer itself
+    ln -sf "$shim" "$HOME/bin/$name"
+    echo "linked  $shim -> $HOME/bin/$name"
+done
+echo "done (make sure $HOME/bin is on your PATH)"
